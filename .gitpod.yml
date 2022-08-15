@@ -1,0 +1,39 @@
+tasks:
+  - init: |
+      sudo apt update -y
+      sudo apt upgrade -y
+      sudo apt install software-properties-common -y
+      sudo apt-add-repository ppa:ansible/ansible -y
+      sudo apt update -y
+      sudo apt install -y askpass ansible ansible-lint python3-argcomplete
+
+      sudo apt install python3-virtualenv askpass python3-argcomplete python3-pip
+      sudo activate-global-python-argcomplete3
+      virtualenv /workspace/venv
+      source /workspace/venv/bin/activate
+      pip install --upgrade pip wheel setuptools
+      pip install -r requirements.txt
+      ansible-galaxy collection install community.crypto
+      ansible-galaxy collection install amazon.aws
+      ansible-galaxy collection install azure.azcollection
+      pip install -r ~/.ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
+      ansible-galaxy collection install google.cloud
+      pre-commit install --install-hooks
+    command: |
+      source /workspace/venv/bin/activate
+
+vscode:
+  extensions:
+    - ms-python.python
+    - redhat.ansible
+    - redhat.vscode-yaml
+    - samuelcolvin.jinjahtml
+
+github:
+    prebuilds:
+        # enable for the master/default branch (defaults to true)
+        master: true
+        # enable for pull requests coming from this repo (defaults to true)
+        pullRequests: false
+        # add a "Review in Gitpod" button as a comment to pull requests (defaults to true)
+        addComment: false

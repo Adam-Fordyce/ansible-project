@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+[ ! -d /usr/local/bin ] && mkdir /usr/local/bin
+cat <<EOF > /usr/local/bin/duck.sh
+#!/usr/bin/env bash
+current=""
+while true;
+do
+	token=f11bcf43-5b90-4a6b-9e2a-36fc304b0050
+	domain=whistle
+	latest=\$(ec2metadata --public-ipv4)
+	echo "public-ipv4=\$latest"
+	if [ "\$current" == "\$latest" ]
+	then
+		echo "ip not changed"
+	else
+		echo "ip has changed - updating"
+		current=\$latest
+		echo url="https://www.duckdns.org/update?domains=\${domain}&token=\${token}&ip=" | curl -k -o /var/log/duck.log -K -
+	fi
+	sleep 5m
+done
+EOF
+chmod 700 /usr/local/bin/duck.sh
+
+cat <<EOF > /usr/local/bin/duck_daemon.sh
+#!/usr/bin/env bash
+sudo su - root -c "nohup /usr/local/bin/duck.sh > /var/log/duck.log 2>&1&"
+EOF
+sudo chmod +x /usr/local/bin/duck_daemon.sh
+sudo chown root /usr/local/bin/duck_daemon.sh
+sudo chmod 744 /usr/local/bin/duck_daemon.sh
+sudo ln -s /usr/local/bin/duck_daemon.sh /etc/rc2.d/S10duckdns
+sudo /usr/local/bin/duck_daemon.sh

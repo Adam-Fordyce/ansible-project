@@ -1,0 +1,10 @@
+---
+# TODO:
+# Add nginx repo
+# Install nginx package
+# Create the directory structure for wordpress nginx config
+# Render the Jinja2 template file into the path for the wordpress nginx config
+# Activeate the Wordpress configuration in nginx
+# Set the nginx application user
+
+...

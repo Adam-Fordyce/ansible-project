@@ -1,0 +1,19 @@
+---
+# TODO...
+# Add a handler to reload and restart php
+
+- name: start php
+  ansible.builtin.service:
+    name: "php{{ site_php_version }}-fpm"
+    state: started
+
+- name: reload php
+  ansible.builtin.service:
+    name: "php{{ site_php_version }}-fpm"
+    state: reloaded
+
+- name: restart php
+  ansible.builtin.service:
+    name: "php{{ site_php_version }}-fpm"
+    state: restarted
+...

@@ -1,0 +1,14 @@
+---
+# Main task file for the role setup_php
+# TODO:
+# Add PHP Repo from ondrej/php
+# Install required PHP packages from apt for PHP version in use
+# PHP-FPM configuration:
+#   Set PHP user
+#   Set PHP group
+#   Set PHP listen owner
+#   Set PHP listen group
+#   Set PHP upload max filesize
+#   Set PHP post max filesize
+# Restart PHP-FPM service if required
+...

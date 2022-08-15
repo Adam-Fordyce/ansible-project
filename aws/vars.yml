@@ -1,0 +1,12 @@
+---
+site_aws_default_az: us-east-1a
+site_instance_type: t3.medium
+site_ami_id: ami-09d56f8956ab235b3
+site_domain_prefix: whistle
+site_ssh_keyname: ansible-key
+site_ssh_key_filename: id_ed25519
+site_webserver_name: webserver01
+site_webserver_user_data: "{{ lookup('file', 'userdata.txt') }}"
+site_dbserver_name: dbserver01
+site_dbserver_user_data:
+...

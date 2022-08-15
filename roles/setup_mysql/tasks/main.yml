@@ -1,0 +1,10 @@
+---
+# TODO:
+# Install packages
+# Configure to listen on all IPv4 interfaces
+# Secure MySQL installation
+# Create Wordpress database
+# Create user with all applicataion database privileges
+# Restart database service if required
+
+...

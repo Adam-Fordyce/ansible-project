@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-yaml
+      - id: check-toml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: check-added-large-files
+        args: ['--maxkb=15024']
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: no-commit-to-branch
+        args: [--branch, staging, --branch, main, --branch, master, --branch, dev]
+      - id: requirements-txt-fixer
+  - repo: https://github.com/ansible-community/ansible-lint
+    rev: v5.4.0
+    hooks:
+      - id: ansible-lint
+        args: ['-c', '.ansible-lint']

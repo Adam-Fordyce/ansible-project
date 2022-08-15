@@ -1,0 +1,10 @@
+---
+# TODO List...
+# Install packages required for querying MySQL/MariaDB
+# Install Wordpress CLI
+# Install Wordpress CLI Bash Completion
+# Download and install the latest version of wordpress
+# Configure wordpress to connect to the database
+# Restart the relevant services if configuration parameters change
+
+...

@@ -1,0 +1,7 @@
+---
+site_application_username: ansible
+site_application_groupname: ansible
+site_php_version: 8.1
+site_domain_prefix: whistle
+site_domain_suffix: duckdns.org
+...
